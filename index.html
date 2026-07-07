@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="test.css">
+    <title>test</title>
+</head>
+<body>
+    <div class="bg-slideshow">
+        <div class="bg-slide active" style="background-image: url('vinnare.jpg')"></div>
+        <div class="bg-slide" style="background-image: url('bollkastning.jpeg')"></div>
+        <div class="bg-slide" style="background-image: url('vinnare.jpg')"></div>
+    </div>
+
+    <h1>
+        <span class="White">Romelanda</span><span class="gul">LOPPET</span>
+
+    </h1>
+
+    <div class="form-wrapper">
+
+        <form>
+            <div class="step active">
+                <h2>Anmälnings sida</h2>
+                <input type="text" id="fornamn" placeholder="Deltagarens förnamn" required>
+                <input type="text" id="efternamn" placeholder="Deltagarens efternamn" required>
+                <input type="number" id="fodelsear" placeholder="Födelseår" required>
+                <input type="email" id="epost" placeholder="E-post" required>
+                <input type="tel" id="telefon" placeholder="Telefonnummer" required>
+
+                <button type="button" onclick="nextStep()">Gå vidare</button>
+            </div>
+
+            <div class="step">
+                <h2>Välj bana</h2>
+                <div class="banor-grid">
+                    <div class="bana-card" data-bana="Knatteloppet">
+                        <img src="knatteloppet.png" alt="Knatteloppet">
+                        <p>Knatteloppet<br>0-6år<br>250 m</p>
+                    </div>
+
+                    <div class="bana-card" data-bana="Juniorloppet">
+                        <img src="juniorloppet.png" alt="Juniorloppet">
+                        <p>Juniorloppet<br>7-12år<br>2 km</p>
+                    </div>
+
+                    <div class="bana-card" data-bana="Lilla loppet">
+                        <img src="lillaloppet.png" alt="Lilla loppet">
+                        <p>Lilla loppet<br>ungdom-vuxen<br>3,5 km</p>
+                    </div>
+
+                    <div class="bana-card" data-bana="Stora loppet">
+                        <img src="stora-loppet.png" alt="Stora loppet">
+                        <p>Stora loppet<br>undom-vuxen<br>6,5 km</p>
+                    </div>
+                </div>
+
+                <span>
+                    <button type="button" onclick="prevStep()">Tillbaka</button>
+                    <button type="button" onclick="nextStep()">Gå vidare</button>
+                </span>
+            </div>
+
+            <div class="step">
+                <h2>Välj klass</h2>
+                <select id="klass" required>
+                    <option value="" disabled selected>Vilken klass deltar du i?</option>
+                    <option value="Promenad">Promenad</option>
+                    <option value="Motionär">Motionär</option>
+                    <option value="Elit">Elit</option>
+                </select>
+
+                
+                <span>
+                    <button type="button" onclick="prevStep()">Tillbaka</button>
+                    <button type="button" onclick="nextStep()">Gå vidare</button>
+                </span>
+            </div>
+
+            <div class="step">
+                <h2>Sammanfattning</h2>
+                <p id="sum-namn"></p>
+                <p id="sum-fodelsear"></p>
+                <p id="sum-epost"></p>
+                <p id="sum-telefon"></p>
+                <p id="sum-bana"></p>
+                <p id="sum-klass"></p>
+                <span>
+                    <button type="button" onclick="prevStep()">Tillbaka</button>
+                    <button type="submit">Skicka in</button>
+                </span>
+            </div>
+
+        </form>
+    </div>
+
+<script>
+const slides = document.querySelectorAll('.bg-slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+setInterval(nextSlide, 5000);
+</script>
+
+<script>
+const form = document.querySelector('form');
+const steps = document.querySelectorAll('.step');
+let currentStep = 0;
+
+function showStep() {
+    steps.forEach(step => {
+        step.classList.remove('active');
+    });
+    steps[currentStep].classList.add('active');
+}
+
+function visaSammanfattning() {
+    document.getElementById("sum-namn").textContent = "Namn: " + document.getElementById("fornamn").value + " " + document.getElementById("efternamn").value;
+    document.getElementById("sum-fodelsear").textContent = "Födelseår: " + document.getElementById("fodelsear").value;
+    document.getElementById("sum-epost").textContent = "E-post: " + document.getElementById("epost").value;
+    document.getElementById("sum-telefon").textContent = "Telefon: " + document.getElementById("telefon").value;
+    document.getElementById("sum-bana").textContent = "Bana: " + valdBana;
+    document.getElementById("sum-klass").textContent = "Klass: " + document.getElementById("klass").value;
+}
+
+function nextStep() {
+    if (currentStep < steps.length - 1) {
+        if (currentStep === 2) {
+            visaSammanfattning();
+        }
+        currentStep++;
+        showStep();
+    }
+}
+
+function prevStep() {
+    if (currentStep > 0) {
+        currentStep--;
+        showStep();
+    }
+}
+
+showStep();
+</script>
+
+<script>
+let valdBana = '';
+
+document.querySelectorAll('.bana-card').forEach(card => {
+    card.addEventListener('click', function() {
+        document.querySelectorAll('.bana-card').forEach(c => {
+            c.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        valdBana = this.dataset.bana;
+    });
+});
+</script>
+
+</body>
+</html>
