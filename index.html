@@ -17,11 +17,12 @@
 
     </h1>
 
-    <div class="form-wrapper">
+    <div class="formulär">
 
         <form>
             <div class="step active">
-                <h2>Anmälnings sida</h2>
+                <h2>Anmälanings sida</h2>
+                 <p class="text">Kontakt uppgifter</p>
                 <input type="text" id="fornamn" placeholder="Deltagarens förnamn" required>
                 <input type="text" id="efternamn" placeholder="Deltagarens efternamn" required>
                 <input type="number" id="fodelsear" placeholder="Födelseår" required>
@@ -32,37 +33,55 @@
             </div>
 
             <div class="step">
-                <h2>Välj bana</h2>
-                <div class="banor-grid">
-                    <div class="bana-card" data-bana="Knatteloppet">
-                        <img src="knatteloppet.png" alt="Knatteloppet">
-                        <p>Knatteloppet<br>0-6år<br>250 m</p>
-                    </div>
+    <h2>Anmälanings sida</h2>
+    <p class="text">Välj bana</p>
+    
+    <div class="banor-grid">
+        
+        <!-- KNATTELOPPET -->
+        <div class="bana-card" data-bana="KNATTELOPPET">
+    <div class="prisband">50 kr</div> <!-- Texten här -->
+    <h3>KNATTELOPPET</h3>
+    <div class="info-rad"><span>Ålder</span><span>0-6 år</span></div>
+    <div class="info-rad"><span>Distans</span><span>250 m</span></div>
+    <img src="knatteloppet.png" alt="Knatteloppet">
+</div>
 
-                    <div class="bana-card" data-bana="Juniorloppet">
-                        <img src="juniorloppet.png" alt="Juniorloppet">
-                        <p>Juniorloppet<br>7-12år<br>2 km</p>
-                    </div>
+<div class="bana-card" data-bana="JUNIORLOPPET">
+    <div class="prisband">50 kr</div> <!-- Texten här -->
+    <h3>JUNIORLOPPET</h3>
+    <div class="info-rad"><span>Ålder</span><span>7-12 år</span></div>
+    <div class="info-rad"><span>Distans</span><span>2 km</span></div>
+    <img src="juniorloppet.png" alt="Juniorloppet">
+</div>
 
-                    <div class="bana-card" data-bana="Lilla loppet">
-                        <img src="lillaloppet.png" alt="Lilla loppet">
-                        <p>Lilla loppet<br>ungdom-vuxen<br>3,5 km</p>
-                    </div>
+<div class="bana-card" data-bana="LILLA LOPPET">
+    <div class="prisband">150 kr</div> <!-- Texten här -->
+    <h3>LILLA LOPPET</h3>
+    <div class="info-rad"><span>Ålder</span><span>Ungdom/vuxen</span></div>
+    <div class="info-rad"><span>Distans</span><span>3,5 km</span></div>
+    <img src="lillaloppet.png" alt="Lilla loppet">
+</div>
 
-                    <div class="bana-card" data-bana="Stora loppet">
-                        <img src="stora-loppet.png" alt="Stora loppet">
-                        <p>Stora loppet<br>undom-vuxen<br>6,5 km</p>
-                    </div>
-                </div>
+<div class="bana-card" data-bana="STORA LOPPET">
+    <div class="prisband">150 kr</div> <!-- Texten här -->
+    <h3>STORA LOPPET</h3>
+    <div class="info-rad"><span>Ålder</span><span>Ungdom/vuxen</span></div>
+    <div class="info-rad"><span>Distans</span><span>6,5 km</span></div>
+    <img src="stora-loppet.png" alt="Stora loppet">
+</div>
 
-                <span>
-                    <button type="button" onclick="prevStep()">Tillbaka</button>
-                    <button type="button" onclick="nextStep()">Gå vidare</button>
-                </span>
-            </div>
+    </div>
+
+    <span>
+        <button type="button" onclick="prevStep()">Tillbaka</button>
+        <button type="button" onclick="nextStep()">Gå vidare</button>
+    </span>
+</div>
 
             <div class="step">
-                <h2>Välj klass</h2>
+                <h2>Anmälanings sida</h2>
+                <p class="text">Välj klass</p>
                 <select id="klass" required>
                     <option value="" disabled selected>Vilken klass deltar du i?</option>
                     <option value="Promenad">Promenad</option>
@@ -78,23 +97,26 @@
             </div>
 
             <div class="step">
-                <h2>Sammanfattning</h2>
+        <h2>Anmälanings sida</h2>
+                <p class="kontroll">!Kontrollera att allt nedan stämmer!</p>
+            <div class="sammanfattningen">
                 <p id="sum-namn"></p>
                 <p id="sum-fodelsear"></p>
                 <p id="sum-epost"></p>
                 <p id="sum-telefon"></p>
                 <p id="sum-bana"></p>
                 <p id="sum-klass"></p>
-                <span>
-                    <button type="button" onclick="prevStep()">Tillbaka</button>
-                    <button type="submit">Skicka in</button>
-                </span>
             </div>
+            <span>
+        <button type="button" onclick="prevStep()">Tillbaka</button>
+        <button type="submit">Skicka in</button>
+    </span>
+</div>
 
         </form>
     </div>
 
-<script>
+<script> // lite java script för att byta bakgrundsbild
 const slides = document.querySelectorAll('.bg-slide');
 let currentSlide = 0;
 
@@ -107,7 +129,7 @@ function nextSlide() {
 setInterval(nextSlide, 5000);
 </script>
 
-<script>
+<script> // JavaScript för att hantera formuläret och stegen
 const form = document.querySelector('form');
 const steps = document.querySelectorAll('.step');
 let currentStep = 0;
@@ -148,7 +170,7 @@ function prevStep() {
 showStep();
 </script>
 
-<script>
+<script> // JavaScript för att hantera val av banorba
 let valdBana = '';
 
 document.querySelectorAll('.bana-card').forEach(card => {
