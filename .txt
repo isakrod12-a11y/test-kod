@@ -1,0 +1,7 @@
+<select required>
+                    <option value="" disabled selected>Välj distans</option>
+                    <option value="1">KNATTELOPPET 0-6år (250 m)</option>
+                    <option value="2">JUNIORLOPPET (2 km)</option>
+                    <option value="3">LILLA LOPPET (3,5 km)</option>
+                    <option value="4">STORA LOPPET (6,5 km)</option>
+                </select>

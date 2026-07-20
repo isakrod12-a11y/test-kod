@@ -210,12 +210,6 @@ button{
     margin-top: 20px;
 }
 
-
-
-
-
-
-
 .step span {
     display: flex;
     gap: 15px;
@@ -245,6 +239,20 @@ button{
     }
 }
 
+.tacki {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    size: 20px;
+    margin: -20px -20px 20px -20px;
+}
+
+.Ruf {
+    size: 20px;
+}
+
+
 ---------------
 
 :root {
@@ -262,7 +270,7 @@ button{
 
 .bana-card {
     background-color: white;
-    padding: 15px 15px 12px; /* lite mindre padding = mer plats för bild */
+    padding: 8px 10px 8px; /* Minska paddingen */
     border-radius: 8px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.1);
     position: relative;
@@ -297,16 +305,17 @@ button{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 6px;
+    gap: 1px; /* Minska gapet */
     border-bottom: 1px solid #f0f0f0;
-    padding: 4px 0; /* mindre padding */
+    padding: 1px 0; /* Minska paddingen */
     font-family: var(--font-body);
     font-size: 13px;
+    margin-top: 0; /* Se till att det inte finns någon extra marginal ovanför */
 }
 
 .bana-card .info-rad:last-of-type {
     border-bottom: none;
-    padding-bottom: 4px; /* ännu mindre luft */
+    padding-bottom: 1px; /* ännu mindre luft */
 }
 
 .bana-card .info-rad span:first-child {
@@ -325,15 +334,15 @@ button{
 
 .prisband {
     position: absolute;
-    top: 10px;
-    right: -28px;
+    top: 5px; /* Flytta upp lite för att undvika överlappning */
+    right: -25px;
     background-color: #000;
     color: #c79d07;
-    padding: 3px 32px;
+    padding: 2px 25px; /* Minska paddingen */
     transform: rotate(45deg);
     font-family: 'Barlow', sans-serif;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 10px; /* Minska textstorleken */
     text-align: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
